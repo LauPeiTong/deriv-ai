@@ -261,9 +261,9 @@ export default {
 }
 
 .analysis-box {
-  border: 2px dashed #001f3f; /* Darker border */
+  border: 2px dashed #333333; /* Darker border */
   border-radius: 12px; /* Rounder corners */
-  background-color: rgba(0, 33, 71, 0.04);
+  background-color: #f9f4f4;
 }
 
 .percentage-bar {

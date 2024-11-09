@@ -1,25 +1,28 @@
 <template lang="pug">
-.user-data
-  v-tabs(
-    v-model="tab"
-    align-with-title
-  )
-    v-tabs-slider(color="primary")
-    v-tab.rounded-t-xl.text-capitalize(
-      v-for="t in tabs"
-      :key="t"
-    ) {{ t }}
+  .user-data
+    v-tabs(
+      v-model="tab"
+      align-with-title
+    )
+      v-tabs-slider(color="primary")
+      v-tab.rounded-t-xl.text-capitalize(
+        v-for="t in tabs"
+        :key="t"
+      ) {{ t }}
 
-  v-card.fill-height.shadow.pa-4.rounded-b-lg.rounded-tr-lg(elevation="0")
-    v-tabs-items(v-model="tab")
-      v-tab-item
-        credit-score-vue
-      v-tab-item
-        financial-info-vue
-      v-tab-item
-        employment-status-vue
-      v-tab-item
-        non-bank-data-vue
+    v-card.fill-height.shadow.pa-4.rounded-b-lg.rounded-tr-lg(elevation="0")
+      .div.d-flex.flex-column(v-if="isLoading")
+        v-progress-circular.mx-auto(color="primary" indeterminate)
+        p.pt-3.secondary--text.text-center Loading customer sentiment result...
+      v-tabs-items(v-else v-model="tab")
+        v-tab-item
+          credit-score-vue(:issue="issue")
+        v-tab-item
+          financial-info-vue(:issue="issue")
+        //v-tab-item
+        //  employment-status-vue
+        //v-tab-item
+        //  non-bank-data-vue
 
 </template>
 
@@ -38,26 +41,19 @@ export default {
     FinancialInfoVue,
     NonBankDataVue
   },
+  props: {
+    issue: null,
+    isLoading: null
+  },
   data () {
     return {
-      customer: null,
       tab: null,
-      tabs: ['Credit Score', 'Financial Information', 'Employment Status', 'Other Non-Bank Data']
+      tabs: ['Sentiment Score', 'Next Steps']
     }
   },
   computed: {
     ...mapGetters({
-      getCustomerById: 'issue.js/getCustomerById'
     })
-  },
-  watch: {
-    $route (to, from) {
-      this.customer = to.params.customer
-    }
-  },
-  created () {
-    // console.log(this.$route.params)
-    this.customer = this.getCustomerById(this.$route.params.id)
   }
 }
 </script>
@@ -75,14 +71,14 @@ export default {
 .v-tab:not(.v-tab--active) {
   border: solid 4px white;
   border-bottom-style: none;
-  background-color: #F2E7E7;
-  color: #BB0000;
+  background-color: #F4F6FB;
+  color: #bb0000;
   padding: 0px 12px;
   margin-top: 8px !important;
 }
 
 .v-tab--active {
-  background-color: #BB0000;
+  background-color: #bb0000;
   color: white;
   padding: 0px 16px;
   margin-top: 4px !important;

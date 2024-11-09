@@ -15,17 +15,15 @@
           p.secondary--text.mb-0 Customer Sentiment Information
           v-breadcrumbs.pa-0(:items="breadcrumbs")
     v-col(cols="8")
-      //user-profile-vue
-      //user-data-vue.pt-4
+      user-profile-vue(:issue="issue")
+      user-data-vue.pt-4(:issue="issue" :isLoading="isLoading")
     v-col(cols="4")
       issue-timeline(:is-loading="isLoading" :issue="issue" :jira-details="jiraDetails" :assignDetails="assignDetails")
-      //loan-detail
 </template>
 
 <script>
 import {mapActions, mapGetters} from 'vuex'
 import UserProfileVue from '~/components/issue/UserProfile.vue'
-import LoanDetail from '~/components/loan/LoanDetail.vue'
 import UserDataVue from '~/components/issue/UserData.vue'
 import IssueTimeline from "../../components/issue/jira/IssueTimeline.vue";
 import {run} from "../../store/genAI";
@@ -36,7 +34,6 @@ export default {
     IssueTimeline,
     UserProfileVue,
     UserDataVue,
-    LoanDetail
   },
   layout: 'default',
   data () {
