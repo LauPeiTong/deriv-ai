@@ -1,4 +1,4 @@
-<template lang="pug">
+<!-- <template lang="pug">
 .dashboard-page.pa-0.ma-0.fill-width
   upper-title.ma-0.darkGrey2--text(:title="'Dashboard'" :icon="'bell'" :rightIconColor="$vuetify.theme.themes.light.primary")
   v-row.ma-0.pt-14.fill-width.px-2
@@ -248,6 +248,267 @@ export default {
     })
   },
   methods: {
+  }
+}
+</script>
+
+<style scoped>
+.shadow {
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12) !important;
+}
+</style> -->
+
+
+<template lang="pug">
+.dashboard-page.pa-0.ma-0.fill-width
+  upper-title.ma-0.darkGrey2--text(:title="'Social Media Sentiment Analysis'" :icon="'analytics'" :rightIconColor="$vuetify.theme.themes.light.primary")
+
+  // Loading overlay
+  v-overlay(:value="loading")
+    v-progress-circular(indeterminate size="64")
+
+  v-row.ma-0.pt-14.fill-width.px-2(v-if="!loading")
+    v-col.pb-6(cols="12")
+      v-card.shadow.pa-4.rounded-lg(elevation="0")
+        .d-flex.justify-space-between.align-center
+          .text-h6 Overall Sentiment Score
+          v-chip(:color="getSentimentColor(analysisResults?.overall_sentiment_status)" dark) {{ analysisResults?.overall_sentiment_status }}
+        v-progress-linear.mt-2(
+          :value="(analysisResults?.overall_average_sentiment_score || 0) * 100"
+          :color="getSentimentColor(analysisResults?.overall_sentiment_status)"
+          height="25"
+        )
+          template(v-slot:default)
+            span.white--text {{ ((analysisResults?.overall_average_sentiment_score || 0) * 100).toFixed(1) }}%
+
+    v-col(cols="4")
+      v-card.fill-height.shadow.pa-3.py-2.rounded-lg(elevation="0")
+        p.font-weight-medium Platform Sentiment Distribution
+        ApexCharts(
+          type="donut"
+          :options="donutChartOptions"
+          :series="platformSentimentSeries"
+        )
+
+    v-col(cols="4")
+      v-card.fill-height.shadow.pa-3.rounded-lg(elevation="0")
+        p.font-weight-medium Feedback Categories
+        ApexCharts(
+          type="bar"
+          :options="barChartOptions"
+          :series="feedbackCategorySeries"
+        )
+
+    v-col(cols="4")
+      v-card.fill-height.shadow.pa-3.rounded-lg(elevation="0")
+        p.font-weight-medium Top Posts by Platform
+        div.rounded-lg(style="min-height: 325px; max-height: 325px; overflow-y: auto;")
+          v-card.px-4.py-2.mb-2(v-for="(platform, index) in ['Facebook', 'Reddit', 'Twitter']" :key="platform" outlined)
+            .d-flex.flex-no-wrap.justify-space-between
+              .company
+                .d-flex.flex-wrap.align-center
+                  p.mb-1.text-h6.pr-2.primary--text {{ platform }}
+                  v-chip.chip-small.mb-1(
+                    :color="getMedalColor(index)"
+                    outlined
+                    pill
+                  )
+                    p.mb-0.caption {{ index + 1 }}
+                p.mb-0 {{ getTopPost(platform) }}
+                p.mb-0(:class="getSentimentTextColor(platform)") {{ getPlatformSentiment(platform) }}
+</template>
+
+<script>
+import { mapGetters } from 'vuex'
+import VueApexCharts from 'vue-apexcharts'
+import socialMediaData from '/store/social_media_data.json'
+import { run } from './genAI.js'
+
+export default {
+  name: 'SentimentDashboard',
+  components: {
+    ApexCharts: VueApexCharts
+  },
+  data() {
+    return {
+      loading: false,
+      analysisResults: null,
+      donutChartOptions: {
+        chart: {
+          type: 'donut'
+        },
+        legend: {
+          show: true
+        },
+        labels: ['Facebook', 'Reddit', 'Twitter'],
+        colors: ['#4267B2', '#FF4500', '#1DA1F2'],
+        plotOptions: {
+          pie: {
+            donut: {
+              labels: {
+                show: true,
+                total: {
+                  show: true,
+                  label: 'Total Sentiment',
+                  formatter: (w) => w.globals.seriesTotals.reduce((a, b) => a + b, 0).toFixed(2)
+                }
+              }
+            }
+          }
+        },
+        dataLabels: {
+          enabled: true
+        }
+      },
+      barChartOptions: {
+        chart: {
+          type: 'bar'
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 4,
+            horizontal: true
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        colors: ['#FF6F67'],
+        xaxis: {
+          categories: [
+            'User Experience',
+            'Customer Support',
+            'Platform Stability',
+            'Withdrawal Process',
+            'Education Resource',
+            'Others'
+          ]
+        }
+      }
+    }
+  },
+  computed: {
+    platformSentimentSeries() {
+      if (!this.analysisResults) return [0, 0, 0]
+      return [
+        this.analysisResults.facebook?.average_sentiment_score * 100 || 0,
+        this.analysisResults.reddit?.average_sentiment_score * 100 || 0,
+        this.analysisResults.twitter?.average_sentiment_score * 100 || 0
+      ]
+    },
+    feedbackCategorySeries() {
+      if (!this.analysisResults?.feedback_categories) return [{
+        name: 'Count',
+        data: [0, 0, 0, 0, 0, 0]
+      }]
+
+      const categories = this.analysisResults.feedback_categories
+      return [{
+        name: 'Count',
+        data: [
+          categories['User Experience'] || 0,
+          categories['Customer Support'] || 0,
+          categories['Platform Stability'] || 0,
+          categories['Withdrawal Process'] || 0,
+          categories['Education Resource'] || 0,
+          categories['Others'] || 0
+        ]
+      }]
+    }
+  },
+  methods: {
+    generatePrompt() {
+      return `Analyze the sentiment in posts and comments from various social media platforms (Facebook, Reddit, Twitter) about Deriv.
+        For each platform, determine whether the overall sentiment is positive, neutral, or negative, and calculate an average sentiment score between 0 and 1 (where 1 is most positive).
+        Also, must categorize each post into one of the following categories based on its content:
+        1. User Experience
+        2. Customer Support
+        3. Platform Stability
+        4. Withdrawal Process
+        5. Education Resource
+        6. Others
+        Finally, identify the top post with the highest engagement for each platform.
+        The data you need to analyze is as follows:
+        ${JSON.stringify(socialMediaData)}
+        Provide the results in the following JSON format:
+        {
+          "facebook": {
+            "average_sentiment_score": "Float",
+            "sentiment_summary": "String (Positive, Neutral, Negative)",
+            "top_post": "String (Top Facebook post based on engagement)"
+          },
+          "reddit": {
+            "average_sentiment_score": "Float",
+            "sentiment_summary": "String (Positive, Neutral, Negative)",
+            "top_post": "String (Top Reddit post based on engagement)"
+          },
+          "twitter": {
+            "average_sentiment_score": "Float",
+            "sentiment_summary": "String (Positive, Neutral, Negative)",
+            "top_post": "String (Top Twitter post based on engagement)"
+          },
+          "overall_average_sentiment_score": "Float (average sentiment score across all platforms)",
+          "overall_sentiment_status": "String (Positive, Neutral, Negative)",
+          "feedback_categories": {
+            "User Experience": "Integer (count of posts in this category)",
+            "Customer Support": "Integer",
+            "Platform Stability": "Integer",
+            "Withdrawal Process": "Integer",
+            "Education Resource": "Integer",
+            "Others": "Integer"
+          }
+        }`
+    },
+    async analyzeSentiment() {
+      try {
+        this.loading = true
+        const prompt = this.generatePrompt()
+        const rawResponse = await run(prompt)
+        this.analysisResults = JSON.parse(rawResponse)
+      } catch (error) {
+        console.error('Error analyzing sentiment:', error)
+        // Show error notification to user
+        this.$notify({
+          type: 'error',
+          title: 'Error',
+          text: 'Failed to analyze sentiment data. Please try again later.'
+        })
+      } finally {
+        this.loading = false
+      }
+    },
+    getSentimentColor(sentiment) {
+      const colors = {
+        Positive: 'success',
+        Neutral: 'warning',
+        Negative: 'error'
+      }
+      return colors[sentiment] || 'grey'
+    },
+    getSentimentTextColor(platform) {
+      const sentiment = this.analysisResults?.[platform.toLowerCase()]?.sentiment_summary
+      const colors = {
+        Positive: 'green--text',
+        Neutral: 'orange--text',
+        Negative: 'red--text'
+      }
+      return colors[sentiment] || 'grey--text'
+    },
+    getMedalColor(index) {
+      const colors = ['#FFD700', '#C0C0C0', '#CD7F32']
+      return colors[index] || '#808080'
+    },
+    getTopPost(platform) {
+      return this.analysisResults?.[platform.toLowerCase()]?.top_post || 'No data available'
+    },
+    getPlatformSentiment(platform) {
+      const data = this.analysisResults?.[platform.toLowerCase()]
+      if (!data) return 'No data'
+      return `${data.sentiment_summary} (${(data.average_sentiment_score * 100).toFixed(1)}%)`
+    }
+  },
+  mounted() {
+    this.analyzeSentiment()
   }
 }
 </script>
