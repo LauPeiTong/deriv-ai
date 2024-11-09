@@ -12,7 +12,7 @@
         )
           v-icon mdi-chevron-left
         .d-grid.pl-2
-          p.mb-0 Borrower Information
+          p.mb-0 Customer Information
           v-breadcrumbs.pa-0(:items="breadcrumbs")
     v-col(cols="8")
       user-profile-vue
@@ -40,12 +40,12 @@ export default {
       // search: null
       breadcrumbs: [
         {
-          text: 'Borrower List',
+          text: 'Customer List',
           disabled: false,
           href: 'borrower_list'
         },
         {
-          text: 'Borrower Information',
+          text: 'Customer Information',
           disabled: true,
           href: 'borrower_details'
         }

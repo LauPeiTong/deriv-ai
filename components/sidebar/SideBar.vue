@@ -2,8 +2,8 @@
 sidebar-menu-akahon(
   :menuItems="menus"
   :isUsedVueRouter="true"
-  :menuTitle="'CREDIT PULSE'"
-  :menuLogo="require(`../../assets/img/credit-pulse-logo.png`)"
+  :menuTitle="'SENTIPULSE'"
+  :menuLogo="require(`../../assets/img/sentipulse-logo.png`)"
   :profileImg="require(`../../assets/employee/1.png`)"
   :bgColor="'white'"
   :secondaryColor="$vuetify.theme.themes.light.primary"

@@ -42,7 +42,7 @@ export default {
     return {
       customer: null,
       tab: null,
-      tabs: ['Credit Score', 'Financial Information', 'Employment Status', 'Other Non-Bank Data']
+      tabs: ['Sentiment Score', 'Next Steps']
     }
   },
   computed: {
@@ -76,13 +76,13 @@ export default {
   border: solid 4px white;
   border-bottom-style: none;
   background-color: #F4F6FB;
-  color: #002147;
+  color: #bb0000;
   padding: 0px 12px;
   margin-top: 8px !important;
 }
 
 .v-tab--active {
-  background-color: #002147;
+  background-color: #bb0000;
   color: white;
   padding: 0px 16px;
   margin-top: 4px !important;
