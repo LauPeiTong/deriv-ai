@@ -1,0 +1,198 @@
+{
+  "facebook": [
+    {
+      "post": "Deriv's platform is easy to use and very reliable!",
+      "likes": 123,
+      "comments": 45,
+      "shares": 30,
+      "timestamp": "2024-11-01T10:30:00Z"
+    },
+    {
+      "post": "I find Deriv's platform to be average in terms of usability.",
+      "likes": 20,
+      "comments": 15,
+      "shares": 5,
+      "timestamp": "2024-11-02T15:45:00Z"
+    },
+    {
+      "post": "Deriv's platform has its pros and cons.",
+      "likes": 50,
+      "comments": 25,
+      "shares": 10,
+      "timestamp": "2024-11-03T09:00:00Z"
+    },
+    {
+      "post": "The latest update to Deriv's platform is decent.",
+      "likes": 40,
+      "comments": 20,
+      "shares": 8,
+      "timestamp": "2024-11-04T14:20:00Z"
+    },
+    {
+      "post": "Deriv's platform is neither great nor terrible.",
+      "likes": 35,
+      "comments": 10,
+      "shares": 3,
+      "timestamp": "2024-11-05T17:30:00Z"
+    },
+    {
+      "post": "I have mixed feelings about Deriv's platform.",
+      "likes": 15,
+      "comments": 5,
+      "shares": 2,
+      "timestamp": "2024-11-06T20:45:00Z"
+    },
+    {
+      "post": "Deriv's platform is alright, nothing special.",
+      "likes": 30,
+      "comments": 12,
+      "shares": 6,
+      "timestamp": "2024-11-07T12:10:00Z"
+    },
+    {
+      "post": "I'm neutral about Deriv's platform.",
+      "likes": 25,
+      "comments": 8,
+      "shares": 4,
+      "timestamp": "2024-11-08T09:55:00Z"
+    },
+    {
+      "post": "Deriv's platform is okay, but could be better.",
+      "likes": 18,
+      "comments": 7,
+      "shares": 3,
+      "timestamp": "2024-11-09T16:05:00Z"
+    },
+    {
+      "post": "The usability of Deriv's platform is average.",
+      "likes": 22,
+      "comments": 9,
+      "shares": 5,
+      "timestamp": "2024-11-10T11:40:00Z"
+    }
+  ],
+  "reddit": [
+    {
+      "post": "Deriv has been incredibly helpful for new traders like me, exceeding my expectations.",
+      "upvotes": 150,
+      "comments": 30,
+      "timestamp": "2024-11-03T09:20:00Z"
+    },
+    {
+      "post": "I love using Deriv's platform, it's made trading so much easier!",
+      "upvotes": 200,
+      "comments": 40,
+      "timestamp": "2024-11-04T14:50:00Z"
+    },
+    {
+      "post": "Deriv's platform has greatly improved my trading experience.",
+      "upvotes": 180,
+      "comments": 35,
+      "timestamp": "2024-11-05T18:30:00Z"
+    },
+    {
+      "post": "I can't recommend Deriv's platform enough, it's fantastic!",
+      "upvotes": 250,
+      "comments": 50,
+      "timestamp": "2024-11-06T21:15:00Z"
+    },
+    {
+      "post": "Deriv's platform is a game-changer for traders.",
+      "upvotes": 160,
+      "comments": 32,
+      "timestamp": "2024-11-07T13:40:00Z"
+    },
+    {
+      "post": "I'm really impressed with Deriv's platform, it's top-notch.",
+      "upvotes": 220,
+      "comments": 45,
+      "timestamp": "2024-11-08T10:25:00Z"
+    },
+    {
+      "post": "Deriv's platform has exceeded my expectations, highly recommended!",
+      "upvotes": 190,
+      "comments": 38,
+      "timestamp": "2024-11-09T16:35:00Z"
+    },
+    {
+      "post": "I've had a great experience using Deriv's platform, it's been a game-changer.",
+      "upvotes": 210,
+      "comments": 42,
+      "timestamp": "2024-11-10T12:10:00Z"
+    },
+    {
+      "post": "Deriv's platform is amazing, it's transformed my trading journey.",
+      "upvotes": 230,
+      "comments": 46,
+      "timestamp": "2024-11-11T08:45:00Z"
+    },
+    {
+      "post": "I'm really happy with Deriv's platform, it's made trading so much easier.",
+      "upvotes": 175,
+      "comments": 35,
+      "timestamp": "2024-11-12T15:55:00Z"
+    }
+  ],
+  "twitter": [
+    {
+      "post": "Loving Deriv's trading features! #trading",
+      "likes": 80,
+      "retweets": 25,
+      "timestamp": "2024-11-04T18:15:00Z"
+    },
+    {
+      "post": "Deriv app crashes frequently, which is extremely frustrating.",
+      "likes": 10,
+      "retweets": 5,
+      "timestamp": "2024-11-05T08:50:00Z"
+    },
+    {
+      "post": "I'm not a fan of Deriv's platform, it's too complicated.",
+      "likes": 5,
+      "retweets": 2,
+      "timestamp": "2024-11-06T13:25:00Z"
+    },
+    {
+      "post": "Deriv's platform is disappointing, it doesn't meet my expectations.",
+      "likes": 8,
+      "retweets": 3,
+      "timestamp": "2024-11-07T19:40:00Z"
+    },
+    {
+      "post": "I've had a terrible experience with Deriv's platform, it's full of bugs.",
+      "likes": 3,
+      "retweets": 1,
+      "timestamp": "2024-11-08T22:55:00Z"
+    },
+    {
+      "post": "Deriv's platform is a letdown, it's not user-friendly at all.",
+      "likes": 6,
+      "retweets": 2,
+      "timestamp": "2024-11-09T16:20:00Z"
+    },
+    {
+      "post": "I regret using Deriv's platform, it's been nothing but frustrating.",
+      "likes": 2,
+      "retweets": 1,
+      "timestamp": "2024-11-10T09:35:00Z"
+    },
+    {
+      "post": "Deriv's platform is a disaster, I wouldn't recommend it to anyone.",
+      "likes": 4,
+      "retweets": 2,
+      "timestamp": "2024-11-11T14:50:00Z"
+    },
+    {
+      "post": "I'm really disappointed with Deriv's platform, it's not worth it.",
+      "likes": 7,
+      "retweets": 3,
+      "timestamp": "2024-11-12T18:05:00Z"
+    },
+    {
+      "post": "Deriv's platform is frustrating to use, it's full of glitches.",
+      "likes": 5,
+      "retweets": 2,
+      "timestamp": "2024-11-13T11:20:00Z"
+    }
+  ]
+}
