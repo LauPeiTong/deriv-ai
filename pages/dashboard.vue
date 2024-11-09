@@ -277,7 +277,7 @@ export default {
               show: true,
               format: 'dd MMM HH:mm'
             },
-            
+
           },
           colors: ['#bb0000'],
           yaxis: {
@@ -335,28 +335,28 @@ export default {
         const randomValue = Math.floor(Math.random() * 100); // Random value between 0-100
         return [now, randomValue];
       },
-  
+
       // Function to update the chart data
       updateChartData() {
         const newData = this.generateMockData(); // Generate new mock data
         this.chartSeries[0].data.push(newData); // Add new data to chartSeries
-  
+
         // Limit data length to the last 50 points
         if (this.chartSeries[0].data.length > 50) {
           this.chartSeries[0].data.shift(); // Remove the oldest data point
         }
-  
+
         this.$set(this.chartSeries[0].data, this.chartSeries[0].data.length, newData);
-  
+
         // Update the x-axis range dynamically to always show the last 1 minute of data
         const now = new Date().getTime();
         this.lineChartOptions.xaxis.max = now; // 1 minute ago
         this.lineChartOptions.xaxis.min = now  - 60 * 1000; // Set max to the latest data timestamp
-  
+
         // this.$nextTick(() => {
         //   this.$refs.chart.updateSeries(this.chartSeries);
         // });
-  
+
         this.$nextTick(() => {
           this.$refs.chart.updateOptions(this.lineChartOptions); // Update the entire chart options
           this.$refs.chart.updateSeries(this.chartSeries); // Update the series data
@@ -440,7 +440,7 @@ export default {
 import { mapGetters } from 'vuex'
 import VueApexCharts from 'vue-apexcharts'
 import socialMediaData from '/store/social_media_data.json'
-import { run } from './genAI.js'
+import { run } from '../store/genAI.js'
 import InfoCard from '@/components/InfoCard.vue'
 import LoanSummaryVue from '~/components/dashboard/LoanSummary.vue'
 
@@ -555,7 +555,7 @@ export default {
             show: true,
             format: 'dd MMM HH:mm'
           },
-          
+
         },
         colors: ['#bb0000'],
         yaxis: {
@@ -607,7 +607,7 @@ export default {
     this.interval = setInterval(this.updateChartData, 3000); // Update every 1 second
     // this.updateChartData();
     this.analyzeSentiment();
-    
+
   },
   beforeDestroy() {
     // Clear the interval when the component is destroyed to prevent memory leaks
@@ -702,7 +702,7 @@ export default {
       //   const prompt = this.generatePrompt()
       //   const rawResponse = await run(prompt)
       //   this.analysisResults = JSON.parse(rawResponse)
-        
+
       // } catch (error) {
       //   console.error('Error analyzing sentiment:', error)
       //   // Show error notification to user
@@ -713,11 +713,11 @@ export default {
       //   })
       // } finally {
       //   this.loading = false
-        
+
       // }
       this.loading = true
       const prompt = this.generatePrompt()
-      
+
       run(prompt)
         .then(rawResponse => {
           this.analysisResults = JSON.parse(rawResponse);
@@ -765,7 +765,7 @@ export default {
       if (!data) return 'No data'
       return `${data.sentiment_summary} (${(data.average_sentiment_score * 100).toFixed(1)}%)`
     },
-    
+
   }
 }
 </script>
