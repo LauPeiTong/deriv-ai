@@ -1,379 +1,3 @@
-<!-- <template lang="pug">
-.dashboard-page.pa-0.ma-0.fill-width
-  upper-title.ma-0.darkGrey2--text(:title="'Dashboard'" :icon="'bell'" :rightIconColor="$vuetify.theme.themes.light.primary")
-  v-row.ma-0.pt-14.fill-width.px-2
-    v-col.pb-6(cols="12")
-      loan-summary-vue
-    v-col(cols="4")
-      v-card.fill-height.shadow.pa-3.py-2.rounded-lg(elevation="0")
-        p.font-weight-medium Number of User Feedback
-        ApexCharts(type="donut" :options="donutChartOptions" :series="series")
-    v-col(cols="4")
-      v-card.fill-height.shadow.pa-3.rounded-lg(elevation="0")
-        p.font-weight-medium Feedback Category
-        ApexCharts(type="bar" :options="barChartOptions" :series="series2" style="border: none;")
-    v-col(cols="4")
-      v-card.fill-height.shadow.pa-3.rounded-lg(elevation="0")
-        p.font-weight-medium Top Comment Keywords
-        div.rounded-lg(style=" min-height: 325px; max-height: 325px; overflow-y: auto;")
-          v-card.px-4.py-2.mb-2(outlined)
-            .d-flex.flex-no-wrap.justify-space-between
-              .company
-                .d-flex.flex-wrap.align-center
-                  p.mb-1.text-h6.pr-2.primary--text Reddit
-                  v-chip.chip-small.mb-1(
-                    color="#FFD700"
-                    outlined
-                    pill
-                  )
-                    p.mb-0.caption #1
-                p.mb-0 Keyword: User friendly
-                p.mb-0.green--text 50
-
-              v-avatar(
-                class="ma-1"
-                size="50"
-                tile
-              )
-              //- v-img(:src="require(`../../assets/company/1.png`)")
-          v-card.px-4.py-2.mb-2(outlined)
-            .d-flex.flex-no-wrap.justify-space-between
-              .company
-                .d-flex.flex-wrap.align-center
-                  p.mb-1.text-h6.pr-2.primary--text Instagram
-                  v-chip.chip-small.mb-1(
-                    color="#8A8A8A"
-                    outlined
-                    pill
-                  )
-                    p.mb-0.caption #2
-                p.mb-0 Keyword: User friendly
-                p.mb-0.green--text 50
-
-              v-avatar(
-                class="ma-1"
-                size="50"
-                tile
-              )
-              //- v-img(:src="require(`../../assets/company/1.png`)")
-          v-card.px-4.py-2.mb-2(outlined)
-            .d-flex.flex-no-wrap.justify-space-between
-              .company
-                .d-flex.flex-wrap.align-center
-                  p.mb-1.text-h6.pr-2.primary--text X
-                  v-chip.chip-small.mb-1(
-                    color="#CD7F32"
-                    outlined
-                    pill
-                  )
-                    p.mb-0.caption #3
-                p.mb-0 Keyword: User friendly
-                p.mb-0.green--text 50
-
-              v-avatar(
-                class="ma-1"
-                size="50"
-                tile
-              )
-              //- v-img(:src="require(`../../assets/company/1.png`)")
-          v-card.px-4.py-2.mb-2(outlined)
-            .d-flex.flex-no-wrap.justify-space-between
-              .company
-                .d-flex.flex-wrap.align-center
-                  p.mb-1.text-h6.pr-2.primary--text Xiao Hong Shu
-                  v-chip.chip-small.mb-1(
-                    color="#f95d6a"
-                    outlined
-                    pill
-                  )
-                    p.mb-0.caption #4
-                p.mb-0 Keyword: User friendly
-                p.mb-0.green--text 50
-
-              v-avatar(
-                class="ma-1"
-                size="50"
-                tile
-              )
-              //- v-img(:src="require(`../../assets/company/1.png`)")
-    //- v-row
-      v-card.rounded-xl.px-0.mb-4(outlined).flex
-        v-card-text.d-flex
-          //- apexchart(type="bar" height="350" width="500" :options="chartOptions" :series="series")
-          //- apexchart(type="pie" height="350" width="600" :options="chartOptions1" :series="series1")
-          //- apexchart(type="bar" height="400" width="300" :options="chartOptions2" :series="series2")
-    //- v-row
-      v-card.rounded-xl.px-0.mb-4(outlined).flex
-        v-card-text.d-flex
-          //- info-card(:value="totalBorrowers" title="Total Borrowers")
-          //- info-card(:value="700" title="Average Credit Score of Borrowers")
-          //- info-card(:value="160000" title="Average Size of Loans")
-</template>
-
-<script>
-import { mapGetters } from 'vuex'
-import VueApexCharts from 'vue-apexcharts'
-import InfoCard from '@/components/InfoCard.vue'
-import LoanSummaryVue from '~/components/dashboard/LoanSummary.vue'
-
-export default {
-  name: 'DashboardPage',
-  components: {
-    apexchart: VueApexCharts,
-    InfoCard,
-    LoanSummaryVue
-  },
-  layout: 'default',
-  data () {
-    return {
-      totalBorrowers: 100,
-      series: [20, 30, 15, 10, 30],
-      series1: [40, 20, 25, 12, 3],
-      donutChartOptions: {
-        chart: {
-          type: 'donut'
-        },
-        legend: {
-          show: true
-        },
-        labels: ['Facebook', 'Reddit', 'XiaoHongShu', 'X', 'Instagram'],
-        colors: ['#FF6F67', '#FF3F34', '#FF0F01', '#CD0B00', '#9A0800'],
-        plotOptions: {
-          pie: {
-            expandOnClick: true,
-            donut: {
-              labels: {
-                show: true,
-                total: {
-                  showAlways: true,
-                  show: true,
-                  total: {
-                    showAlways: true,
-                    show: true,
-                    color: '#333333',
-                    fontSize: '20px',
-                    fontWeight: '600',
-                    formatter: function (value) {
-                      const t = value.globals.series.reduce((a, b) => a + b, 0)
-                      return t.toString() + ' users'
-                    }
-                  },
-                  value: {
-                    color: '#bb0000',
-                    fontSize: '25px',
-                    fontWeight: '600'
-                  }
-                }
-              }
-            }
-          },
-          responsive: [{
-            breakpoint: 480,
-            options: {
-              chart: {
-                type: 'bar',
-                width: 300
-              },
-              legend: {
-                position: 'bottom'
-              }
-            }
-          }],
-          dataLabels: {
-            enabled: false
-          }
-        },
-        pieChartOptions: {
-          labels: ['Penang', 'Kuala Lumpur', 'Johor', 'Selangor', 'Other States'],
-          colors: ['#002147', '#004594', '#9197B8', '#848484', '#BB0000'],
-          responsive: [
-            {
-              breakpoint: 480,
-              options: {
-                chart: {
-                  width: 200
-                },
-                legend: {
-                  position: 'bottom'
-                }
-              }
-            }
-          ]
-        },
-        barChartOptions: { // Add your chart options here
-          chart: {
-            // id: 'apexchart-example',
-            type: 'bar'
-          },
-          plotOptions: {
-            bar: {
-              borderRadius: 4,
-              borderRadiusApplication: 'end',
-              horizontal: false
-            }
-          },
-          dataLabels: {
-            enabled: false
-          },
-          colors: ['#FF6F67', '#FF3F34', '#FF0F01', '#CD0B00', '#9A0800'],
-          xaxis: {
-            categories: ['User Experience', 'Customer Support', 'Platform Stability', 'Withdrawal Process', 'Education Resource']
-          },
-          responsive: [
-            {
-              breakpoint: 480,
-              options: {
-                chart: {
-                  width: 200,
-                  height: '100%'
-                }
-              }
-            }
-          ]
-        },
-        lineChartOptions: {
-          chart: {
-            id: 'realtime',
-            height: 350,
-            type: 'line',
-            animations: {
-              enabled: true,
-              easing: 'linear',
-              dynamicAnimation: {
-                speed: 1000
-              }
-            },
-            toolbar: {
-              show: false
-            },
-            zoom: {
-              enabled: false
-            }
-          },
-          dataLabels: {
-            enabled: false
-          },
-          stroke: {
-            curve: 'smooth'
-          },
-          title: {
-            text: 'Dynamic Updating Chart',
-            align: 'left'
-          },
-          markers: {
-            size: 0
-          },
-          xaxis: {
-            // categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-            // title: {
-            //   text: 'Month'
-            // }
-            type: 'datetime',
-            // range: 10000
-            max: new Date().getTime() - 60 * 1000, // 1 hour ago
-            min: new Date().getTime(), // current time
-            tickAmount: 5,
-            labels: {
-              show: true,
-              format: 'dd MMM HH:mm'
-            },
-
-          },
-          colors: ['#bb0000'],
-          yaxis: {
-            title: {
-              text: 'Value'
-            }
-          },
-          legend: {
-            show: false
-          }
-        },
-        series2: [
-          {
-            name: 'Feedback Category',
-            data: [
-              { x: 'User Experience', y: 20, fillColor: '#FF6F67' },
-              { x: 'Customer Support', y: 30, fillColor: '#FF3F34' },
-              { x: 'Platform Stability', y: 15, fillColor: '#FF0F01' },
-              { x: 'Withdrawal Process', y: 10, fillColor: '#CD0B00' },
-              { x: 'Education Resource', y: 30, fillColor: '#9A0800' }
-            ]
-          }
-        ]
-      }
-    },
-    computed: {
-      ...mapGetters({
-      })
-    },
-    mounted() {
-      const interval = (0);
-      const chartSeries = [];
-      const timeStamps = [];
-      this.interval = setInterval(this.updateChartData, 3000); // Update every 1 second
-      this.updateChartData();
-      console.log("chartSeries", chartSeries)
-    },
-    beforeDestroy() {
-      // Clear the interval when the component is destroyed to prevent memory leaks
-      clearInterval(this.interval);
-    },
-    watch: {
-      // Watch for changes in chartSeries
-      chartSeries(newValue, oldValue) {
-        console.log('chartSeries changed:', chartSeries);
-      },
-    },
-    beforeDestroy() {
-      clearInterval(this.interval); // Clear the interval when the component is destroyed
-    },
-    methods: {
-      // Function to generate mock data (random values)
-      generateMockData() {
-        const now = new Date().getTime(); // Current timestamp
-        const randomValue = Math.floor(Math.random() * 100); // Random value between 0-100
-        return [now, randomValue];
-      },
-
-      // Function to update the chart data
-      updateChartData() {
-        const newData = this.generateMockData(); // Generate new mock data
-        this.chartSeries[0].data.push(newData); // Add new data to chartSeries
-
-        // Limit data length to the last 50 points
-        if (this.chartSeries[0].data.length > 50) {
-          this.chartSeries[0].data.shift(); // Remove the oldest data point
-        }
-
-        this.$set(this.chartSeries[0].data, this.chartSeries[0].data.length, newData);
-
-        // Update the x-axis range dynamically to always show the last 1 minute of data
-        const now = new Date().getTime();
-        this.lineChartOptions.xaxis.max = now; // 1 minute ago
-        this.lineChartOptions.xaxis.min = now  - 60 * 1000; // Set max to the latest data timestamp
-
-        // this.$nextTick(() => {
-        //   this.$refs.chart.updateSeries(this.chartSeries);
-        // });
-
-        this.$nextTick(() => {
-          this.$refs.chart.updateOptions(this.lineChartOptions); // Update the entire chart options
-          this.$refs.chart.updateSeries(this.chartSeries); // Update the series data
-        });
-      }
-    }
-  }
-}
-</script>
-
-<style scoped>
-.shadow {
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12) !important;
-}
-</style> -->
-
-
 <template lang="pug">
 .dashboard-page.pa-0.ma-0.fill-width
   upper-title.ma-0.darkGrey2--text(:title="'Social Media Sentiment Analysis'" :icon="'analytics'" :rightIconColor="$vuetify.theme.themes.light.primary")
@@ -383,18 +7,12 @@ export default {
     v-progress-circular(indeterminate size="64")
 
   v-row.ma-0.pt-14.fill-width.px-2(v-if="!loading")
-    v-col.pb-6(cols="12")
-      v-card.shadow.pa-4.rounded-lg(elevation="0")
-        .d-flex.justify-space-between.align-center
-          .text-h6 Overall Sentiment Score
-          v-chip(:color="getSentimentColor(analysisResults?.overall_sentiment_status)" dark) {{ analysisResults?.overall_sentiment_status }}
-        v-progress-linear.mt-2(
-          :value="(analysisResults?.overall_average_sentiment_score || 0) * 100"
-          :color="getSentimentColor(analysisResults?.overall_sentiment_status)"
-          height="25"
-        )
-          template(v-slot:default)
-            span.white--text {{ ((analysisResults?.overall_average_sentiment_score || 0) * 100).toFixed(1) }}%
+    //- Meter
+    v-card.fill-height.rounded-lg.py-2.px-3.mb-3(outlined)
+      ApexCharts(type="radialBar" :options="meterChartOptions" :series="series")
+      v-divider.my-2
+      p.text-center.mb-0.primary--text.font-weight-medium Status
+      h2.text-center.mb-4(:class="getCreditColor(analysisResults?.overall_average_sentiment_score * 100)") {{ analysisResults?.overall_sentiment_status }}
 
     v-col(cols="4")
       v-card.fill-height.shadow.pa-3.py-2.rounded-lg(elevation="0")
@@ -509,64 +127,6 @@ export default {
           ]
         }
       },
-      lineChartOptions: {
-        chart: {
-          id: 'realtime',
-          height: 350,
-          type: 'line',
-          animations: {
-            enabled: true,
-            easing: 'linear',
-            dynamicAnimation: {
-              speed: 1000
-            }
-          },
-          toolbar: {
-            show: false
-          },
-          zoom: {
-            enabled: false
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          curve: 'smooth'
-        },
-        title: {
-          text: 'Dynamic Updating Chart',
-          align: 'left'
-        },
-        markers: {
-          size: 0
-        },
-        xaxis: {
-          // categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-          // title: {
-          //   text: 'Month'
-          // }
-          type: 'datetime',
-          // range: 10000
-          max: new Date().getTime() - 60 * 1000, // 1 hour ago
-          min: new Date().getTime(), // current time
-          tickAmount: 5,
-          labels: {
-            show: true,
-            format: 'dd MMM HH:mm'
-          },
-
-        },
-        colors: ['#bb0000'],
-        yaxis: {
-          title: {
-            text: 'Value'
-          }
-        },
-        legend: {
-          show: false
-        }
-      },
     }
   },
   computed: {
@@ -575,9 +135,9 @@ export default {
     platformSentimentSeries() {
       if (!this.analysisResults) return [0, 0, 0]
       return [
-        this.analysisResults.facebook?.average_sentiment_score * 100 || 0,
-        this.analysisResults.reddit?.average_sentiment_score * 100 || 0,
-        this.analysisResults.twitter?.average_sentiment_score * 100 || 0
+        this.analysisResults.facebook?.post_count || 0,
+        this.analysisResults.reddit?.post_count || 0,
+        this.analysisResults.twitter?.post_count || 0
       ]
     },
     feedbackCategorySeries() {
@@ -598,7 +158,97 @@ export default {
           categories['Others'] || 0
         ]
       }]
-    }
+    },
+    series() {
+    // Calculate series only if analysisResults and overall_average_sentiment_score are defined
+    return this.analysisResults
+      ? [((this.analysisResults.overall_average_sentiment_score || 0.75) / 0.85) * 100]
+      : [0];
+  },
+  meterChartOptions() {
+    return {
+      chart: {
+        type: 'radialBar',
+        offsetY: -10,
+        sparkline: {
+          enabled: true
+        }
+      },
+      plotOptions: {
+        radialBar: {
+          hollow: {
+            size: '70%',
+            margin: -20,
+            image: require('../assets/img/speedometer.svg'),
+            imageWidth: 64,
+            imageHeight: 64,
+            imageClipped: false
+          },
+          startAngle: -90,
+          endAngle: 90,
+          track: {
+            background: '#f2f4f6',
+            strokeWidth: '70%',
+            margin: 5,
+            dropShadow: {
+              enabled: true,
+              top: 0,
+              left: 0,
+              color: '#c1c1c1',
+              opacity: 0.5,
+              blur: 1
+            }
+          },
+          dataLabels: {
+            name: {
+              show: true,
+              offsetY: -40,
+              fontSize: '22px',
+              color: '#002147'
+            },
+            value: {
+              show: false
+            }
+          }
+        }
+      },
+      grid: {
+        padding: {
+          top: -10
+        }
+      },
+      fill: {
+        type: 'gradient',
+        gradient: {
+          type: 'horizontal',
+          shade: 'light',
+          shadeIntensity: 0.4,
+          inverseColors: false,
+          opacityFrom: 1,
+          opacityTo: 1,
+          stops: [0, 10, 53, 91],
+          colorStops: [
+            {
+              offset: -2.35,
+              color: '#F52F62',
+              opacity: 1
+            },
+            {
+              offset: 60.52,
+              color: '#4AA9F2',
+              opacity: 1
+            },
+            {
+              offset: 84.99,
+              color: '#49CFB2',
+              opacity: 1
+            }
+          ]
+        }
+      },
+      labels: [this.analysisResults?.overall_average_sentiment_score]
+    };
+  }
   },
   mounted () {
     const interval = (0);
@@ -672,17 +322,20 @@ export default {
           "facebook": {
             "average_sentiment_score": "Float",
             "sentiment_summary": "String (Positive, Neutral, Negative)",
-            "top_post": "String (Top Facebook post based on engagement)"
+            "top_post": "String (Top Facebook post based on engagement)",
+            "post_count": "Integer (total number of Facebook posts)"
           },
           "reddit": {
             "average_sentiment_score": "Float",
             "sentiment_summary": "String (Positive, Neutral, Negative)",
-            "top_post": "String (Top Reddit post based on engagement)"
+            "top_post": "String (Top Reddit post based on engagement)",
+            "post_count": "Integer (total number of Reddit posts)"
           },
           "twitter": {
             "average_sentiment_score": "Float",
             "sentiment_summary": "String (Positive, Neutral, Negative)",
-            "top_post": "String (Top Twitter post based on engagement)"
+            "top_post": "String (Top Twitter post based on engagement)",
+            "post_count": "Integer (total number of Twitter posts)"
           },
           "overall_average_sentiment_score": "Float (average sentiment score across all platforms)",
           "overall_sentiment_status": "String (Positive, Neutral, Negative)",
@@ -765,7 +418,27 @@ export default {
       if (!data) return 'No data'
       return `${data.sentiment_summary} (${(data.average_sentiment_score * 100).toFixed(1)}%)`
     },
-
+    getCreditStatus (score) {
+      if (score >= 66) {
+        return 'Positive'
+      } else if (score >= 33) {
+        return 'Neutral'
+      } else {
+        return 'Negative'
+      }
+    },
+    getCreditColor (score) {
+      if (score >= 66) {
+        return 'excellent--text'
+      } else if (score >= 33) {
+        return 'good--text'
+      } else {
+        return 'weak--text'
+      }
+    },
+  },
+  mounted() {
+    this.analyzeSentiment()
   }
 }
 </script>
