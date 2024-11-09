@@ -16,9 +16,9 @@
         p.pt-3.secondary--text.text-center Loading customer sentiment result...
       v-tabs-items(v-else v-model="tab")
         v-tab-item
-          credit-score-vue(:issue="issue")
+          issue-analysis(:issue="issue")
         v-tab-item
-          financial-info-vue(:issue="issue")
+          next-steps(:issue="issue")
         //v-tab-item
         //  employment-status-vue
         //v-tab-item
@@ -28,18 +28,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import CreditScoreVue from './CreditScore.vue'
-import EmploymentStatusVue from './EmploymentStatus.vue'
-import FinancialInfoVue from './FinancialInfo.vue'
-import NonBankDataVue from './NonBankData.vue'
+import IssueAnalysis from './IssueAnalysis.vue'
+import NextSteps from "./NextSteps.vue";
 
 export default {
-  name: 'UserProfile',
+  name: 'IssueData',
   components: {
-    CreditScoreVue,
-    EmploymentStatusVue,
-    FinancialInfoVue,
-    NonBankDataVue
+    NextSteps,
+    IssueAnalysis,
   },
   props: {
     issue: null,
@@ -71,7 +67,7 @@ export default {
 .v-tab:not(.v-tab--active) {
   border: solid 4px white;
   border-bottom-style: none;
-  background-color: #F4F6FB;
+  background-color: #f9f4f4;
   color: #bb0000;
   padding: 0px 12px;
   margin-top: 8px !important;

@@ -286,8 +286,7 @@ export default {
   },
   methods: {
     checkRoute (link) {
-      if (link.startsWith('/borrower') && this.$route.name.startsWith('borrower')) { return true }
-      if (link === '/message' && this.$route.name === 'chatbot') { return true }
+      if (link.startsWith('/issue') && this.$route.name.startsWith('issue')) { return true }
       return ('/' + this.$route.name) === link
     },
     tooltipAttached () {

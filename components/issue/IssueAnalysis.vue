@@ -10,39 +10,36 @@
           p.text-center.mb-0.primary--text.font-weight-medium Status
           h2.text-center.mb-4(:class="getCreditColor(issue.sentimentScore ?? 9)") {{ getCreditStatus(issue.sentimentScore ?? 9) }}
 
-          //- Download document
+          //- Key issue
           v-card.rounded-lg(outlined)
-            v-card.px-1.py-2.d-flex.rounded-lg.background.border(elevation="0" @click="")
-              v-icon.primary--text.pa-2(small) mdi-file-download
+            v-card.px-1.py-2.d-flex.rounded-lg.background.border(elevation="0")
+              v-icon.primary--text.pa-2(small) mdi-alert-circle
               .d-grid.pl-1
-                p.mb-1.font-weight-medium.primary--textbody-2.text-decoration-underline CTOS Report
-                p.mb-0.mt-n1.body-2.darkGrey--text Download Here
+                p.mb-1.font-weight-medium.primary--textbody-2.text-decoration-underline Key Issue
+                p.mb-0.mt-n1.body-2.darkGrey--text {{ issue.key_issue ?? '-' }}
 
       //- Score percentage
       v-col(cols="7")
         v-card.fill-height.rounded-lg.pa-3(outlined)
-          v-col.pb-1.px-2(style="height: 33.33%;")
-            v-card.px-1.py-2.d-flex.rounded-lg.fill-height.align-center(outlined)
-              v-icon.primary--text.pa-2.mr-2(large) mdi-alert-circle
-              .d-grid.pl-1.darkGrey--text.header Key Issue
-                p.mb-0.mt-n1.value.darkGrey2--text {{ issue.key_issue ?? '-' }}
-          v-col.pb-1.px-2(style="height: 33.33%;")
-            v-card.px-1.py-2.d-flex.rounded-lg.fill-height.align-center(outlined)
-              v-icon.primary--text.pa-2.mr-2(large) mdi-lightbulb-on-outline
+          v-col.pb-1.px-2
+            v-card.pa-2.d-flex.rounded-lg.fill-height.align-center(outlined)
+              v-icon.primary--text.pa-2.mr-2 mdi-lightbulb-on-outline
               .d-grid.pl-1.darkGrey--text.header Recommendation
                 p.mb-0.mt-n1.value.darkGrey2--text {{ issue.recommendation.focus ?? '-' }}
-          v-col.pb-1.px-2(style="height: 33.33%;")
-            v-card.px-1.py-2.d-flex.rounded-lg.fill-height.align-center(outlined)
-              v-icon.primary--text.pa-2.mr-2(large) mdi-cogs
-              .d-grid.pl-1.darkGrey--text.header Suggested Features
-                p.mb-0.mt-n1.value.darkGrey2--text {{ issue.recommendation.suggested_features ?? '-' }}
+          v-col.pb-1.px-2
+            v-card.pa-2.rounded-lg.fill-height.align-center(outlined)
+              .d-flex.align-center
+                v-icon.primary--text.pa-2.mr-2 mdi-cogs
+                .d-grid.pl-1.darkGrey--text.header Suggested Features
+              .d-flex.flex-column.pa-2.mb-2.rounded.bg--background2(v-for="feature in issue.recommendation.suggested_features")
+                span {{feature}}
 
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  name: 'CreditScore',
+  name: 'IssueAnalysis',
   components: {
   },
   props: {
@@ -227,5 +224,9 @@ export default {
 
 .value{
   font-size: 16px;
+}
+
+.bg--background2 {
+  background-color: #F2E7E7;
 }
 </style>

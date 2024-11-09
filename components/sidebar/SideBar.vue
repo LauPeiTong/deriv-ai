@@ -4,7 +4,7 @@ sidebar-menu-akahon(
   :isUsedVueRouter="true"
   :menuTitle="'SENTIPULSE'"
   :menuLogo="require(`../../assets/img/sentipulse-logo.png`)"
-  :profileImg="require(`../../assets/employee/1.png`)"
+  :profileImg="require(`../../assets/img/profile.png`)"
   :bgColor="'white'"
   :secondaryColor="$vuetify.theme.themes.light.primary"
   :logoTitleColor="$vuetify.theme.themes.light.primary"
@@ -31,9 +31,9 @@ export default {
           icon: 'bx-grid-alt'
         },
         {
-          link: '/borrower',
-          name: 'Customer Insights',
-          tooltip: 'Customer Insights',
+          link: '/issue',
+          name: 'Customer Sentiments',
+          tooltip: 'Customer Sentiments',
           icon: 'bx-bullseye'
         },
         {

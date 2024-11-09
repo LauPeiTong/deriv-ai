@@ -16,7 +16,7 @@
           v-breadcrumbs.pa-0(:items="breadcrumbs")
     v-col(cols="8")
       user-profile-vue(:issue="issue")
-      user-data-vue.pt-4(:issue="issue" :isLoading="isLoading")
+      issue-data-vue.pt-4(:issue="issue" :isLoading="isLoading")
     v-col(cols="4")
       issue-timeline(:is-loading="isLoading" :issue="issue" :jira-details="jiraDetails" :assignDetails="assignDetails")
 </template>
@@ -24,7 +24,7 @@
 <script>
 import {mapActions, mapGetters} from 'vuex'
 import UserProfileVue from '~/components/issue/UserProfile.vue'
-import UserDataVue from '~/components/issue/UserData.vue'
+import IssueDataVue from '~/components/issue/IssueData.vue'
 import IssueTimeline from "../../components/issue/jira/IssueTimeline.vue";
 import {run} from "../../store/genAI";
 
@@ -33,7 +33,7 @@ export default {
   components: {
     IssueTimeline,
     UserProfileVue,
-    UserDataVue,
+    IssueDataVue,
   },
   layout: 'default',
   data () {

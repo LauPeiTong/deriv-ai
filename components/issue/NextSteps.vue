@@ -14,7 +14,7 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  name: 'FinancialInfo',
+  name: 'NextSteps',
   components: {
   },
   props: {

@@ -373,6 +373,11 @@ export const mutations = {
     const selectedIssue = l.table.find(c => c.id === issue.id)
     selectedIssue.status = status
   },
+  updateAssignedDate (state, { i: issue, d: date }) {
+    let l = state.list[0];
+    const selectedIssue = l.table.find(c => c.id === issue.id)
+    selectedIssue.assignedDate = date
+  },
   updateIssueData (state, { id: issueId, res: response }) {
     let l = state.list[0];
     const selectedIssue = l.table.find(c => c.id === issueId);
@@ -394,6 +399,9 @@ export const actions = {
   },
   changeIssueStatus ({ commit }, { i: issue, s: status }) {
     commit('updateIssueStatus', { i: issue, s: status })
+  },
+  changeAssignedDate ({ commit }, { i: issue, d: date }) {
+    commit('updateAssignedDate', { i: issue, d: date })
   },
   updateIssueData ({ commit }, { id: issueId, res: response }) {
     commit('updateIssueData', { id: issueId, res: response });

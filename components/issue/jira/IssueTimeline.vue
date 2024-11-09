@@ -49,9 +49,9 @@ v-card.fill-height.shadow.pa-4.rounded-lg.white(elevation="0")
                   v-icon.primary--text mdi-calendar-check
                   p.primary--text.mb-0.font-weight-medium.ml-2 Jira
                 v-divider.my-2
-                p.mb-0 Assigned Date: {{issue?.assignedDate}}
-                p.mb-0 Jira ID: {{issue?.jiraId}}
-                p.mb-0 Time left to solve the issue: {{issue?.deadline}}
+                p.mb-0.font-weight-medium Assigned Date: {{issue?.assignedDate}}
+                p.mb-0.font-weight-medium Jira ID: {{issue?.jiraId}}
+                p.mb-0.font-weight-medium Time left to solve the issue: {{issue?.deadline}}
 
                 .d-flex.justify-center.pt-3
                   v-btn.text-capitalize.primary.rounded(@click="handleDialog()") View Jira Details
@@ -145,7 +145,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      changeIssueStatus: 'issue/changeIssueStatus'
+      changeIssueStatus: 'issue/changeIssueStatus',
+      changeAssignedDate: 'issue/changeAssignedDate'
     }),
     getProgressBarColor (value) {
       const color = this.$vuetify.theme.themes.light.primary
@@ -180,7 +181,8 @@ export default {
       this.dialogVisible = !this.dialogVisible;
     },
     assignJira () {
-      this.changeIssueStatus({ i: this.issue, s: 'To Progress' })
+      this.changeIssueStatus({ i: this.issue, s: 'In Progress' })
+      this.changeAssignedDate({ i: this.issue, d: "10/11/2024"})
       this.handleDialog();
     },
     handleApprove () {
