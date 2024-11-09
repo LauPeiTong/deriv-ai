@@ -11,7 +11,7 @@
             v-card.rounded-xl
               fetchdata()
               v-toolbar.px-4(elevation="0")
-                h3.primary--text.font-weight-medium Loan Application Recommendation
+                h3.secondary--text.font-weight-medium Jira Details
               v-card-text.pb-0(color="black")
                 div.subtitle-1.pa-3.secondary--text
                   | Based on the financial profile, we recommend the following loan options.
@@ -76,7 +76,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getCustomerById: 'customer/getCustomerById'
+      getCustomerById: 'issue.js/getCustomerById'
     })
   },
   watch: {
@@ -93,7 +93,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      changeLoanStatus: 'customer/changeLoanStatus'
+      changeLoanStatus: 'issue.js/changeLoanStatus'
     }),
     searchBy (newValue) {
       this.search = newValue
@@ -136,8 +136,8 @@ export default {
 
 <style scoped>
 .primary--card {
-  border: 1px solid #002147;
-  color: #002147;
+  border: 1px solid #BB0000;
+  color: #BB0000;
 }
 
 .gray--card {

@@ -453,7 +453,7 @@ export default {
     border: none;
     border-radius: 12px;
     transition: all 0.5s ease;
-    background: #F2F4F6;
+    background: #F9F4F4;
 ;
   }
   .sidebar.open input {
@@ -470,7 +470,7 @@ export default {
     left: 0;
     transform: translateY(-50%);
     font-size: 22px;
-    background: #F2F4F6;
+    background: #F9F4F4;
     color: var(--icons-color);
   }
   .sidebar.open .bx-search:hover {

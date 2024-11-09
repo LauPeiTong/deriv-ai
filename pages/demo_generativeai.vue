@@ -46,7 +46,7 @@
 
 <script>
 // Import the run function from your genAI.js file
-import { run } from './genAI.js'
+import { run } from '../store/genAI.js'
 
 export default {
   data () {

@@ -158,7 +158,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getCustomerById: 'customer/getCustomerById'
+      getCustomerById: 'issue.js/getCustomerById'
     })
   },
   watch: {
@@ -172,7 +172,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      changeLoanStatus: 'customer/changeLoanStatus'
+      changeLoanStatus: 'issue.js/changeLoanStatus'
     }),
     getProgressBarColor (value) {
       const color = this.$vuetify.theme.themes.light.primary
@@ -332,7 +332,7 @@ export default {
 }
 
 .primary-linear {
-  background: linear-gradient(200deg, #A6C2EC 5.17%, #5761B8 49.42%, #002147 117.87%);
+  background: linear-gradient(200deg, #FFD0CD 5.17%, #BB0000 49.42%, #9A0800 117.87%);
 }
 
 .title {

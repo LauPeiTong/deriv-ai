@@ -1,19 +1,19 @@
 <template lang="pug">
 .dashboard-page.pa-0.ma-0.fill-width
-  upper-title.ma-0(:title="'Customer Insights'" :icon="'bell'" :rightIconColor="$vuetify.theme.themes.light.primary")
+  upper-title.ma-0(:title="'Customer Sentiments'" :icon="'bell'" :rightIconColor="$vuetify.theme.themes.light.primary")
   v-row.ma-0.pt-14.fill-width.px-2
     v-col(cols="12")
-      borrower-list-vue
+      issue-list-vue
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import BorrowerListVue from '~/components/borrowerList/BorrowerList.vue'
+import IssueListVue from '~/components/issueList/IssueList.vue'
 
 export default {
   name: 'BorrowerPage',
   components: {
-    BorrowerListVue
+    IssueListVue
   },
   layout: 'default',
   data () {

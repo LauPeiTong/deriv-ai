@@ -1,15 +1,23 @@
 <template lang="pug">
 .financial-info
-  p.font-weight-medium Next Steps
-  v-card(outlined)
-    v-list
-      v-list-item-group(v-model="checkedItems")
-        v-list-item(v-for="item in steps")
-          //- v-list-item-content(:class="{'strikethrough': checkedItems.includes(index)}")
-          v-checkbox(
-            :label="item"
-            :value="index"
-          )
+  p.font-weight-medium Financial Information
+  v-row
+    template(v-for="item in financialData")
+      v-col.pb-1(:cols="item.col")
+        v-card.px-1.py-2.d-flex.rounded-lg(outlined)
+          v-icon.primary--text.pa-2(small) {{ item.icon }}
+          .d-grid.pl-1
+            .caption.font-weight-light.darkGrey--text {{ item.title }}
+            p.mb-0.mt-n1.body-2 {{ item.value }}
+
+    v-col(cols="6")
+      v-card.rounded-lg(outlined)
+        v-card.px-1.py-2.d-flex.rounded-lg.background.border(elevation="0" @click="")
+          v-icon.primary--text.pa-2(small) mdi-file-download
+          .d-grid.pl-1
+            p.mb-1.font-weight-medium.primary--textbody-2.text-decoration-underline Bank Statement
+            p.mb-0.mt-n1.body-2.darkGrey--text Download Here
+
 </template>
 
 <script>
@@ -21,10 +29,8 @@ export default {
   data () {
     return {
       customer: null,
-      financialData: null,
-      nextStepsString: `Prioritize suggested features based on user impact and feasibility, Assign tasks to development team and set milestones, Notify user of planned improvements and gather further feedback, Conduct A/B testing of new features to measure effectiveness, Monitor user feedback post-implementation for continuous improvement`,
-      steps: []
-    };
+      financialData: null
+    }
   },
   computed: {
     ...mapGetters({
@@ -38,7 +44,6 @@ export default {
   },
   created () {
     // console.log(this.$route.params)
-    this.splitNextSteps();
     this.customer = this.getCustomerById(this.$route.params.id)
     if (this.customer.name === 'Khairul bin Ahmad') {
       this.financialData = [
@@ -73,11 +78,7 @@ export default {
     }
   },
   methods: {
-    splitNextSteps() {
-      // Split the nextStepsString by commas and remove any surrounding whitespace
-      this.steps = this.nextStepsString.split(',').map(item => item.trim());
-    }
-  },
+  }
 }
 </script>
 

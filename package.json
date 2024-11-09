@@ -12,6 +12,8 @@
     "lintfix": "yarn lint:js --fix"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "@gradio/client": "^1.7.1",
     "@lossendae/vue-avatar": "^0.1.5",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/google-fonts": "^3.1.0",

@@ -7,7 +7,7 @@ export default new Vuetify({
     themes: {
       light: {
         primary: '#BB0000', // purple
-        secondary: '#333333', // black
+        secondary: '#020202', // black
         tertiary: '#BCE7D9', // light green
         danger: '#FF6B6C', // red
         darkGrey: '#848484',
@@ -21,14 +21,14 @@ export default new Vuetify({
         blue: '#1890FF',
         darkBlue: '#314760',
         orange: '#FDA42E',
-        background: '#F2F4F6',
-        background2: '#F4F6FB',
+        background: '#F9F4F4',
+        background2: '#F2E7E7',
         darkRed: '#9a0800',
         lightRed: '#F9F4F4',
         lightRed2: '#f2e7e7',
         lightRed3: '#ebdbdb',
         lightRed4: '#ffd0cd',
-        lightBlue: '#e5e6ee',
+        lightBlue: '#e9f7ff',
         lightBlue2: '#aaaec8',
         lightBlue3: '#E5E6EE',
         weak: '#F52F62',
