@@ -40,7 +40,7 @@
       v-card.fill-height.shadow.pa-3.rounded-lg(elevation="0")
         p.font-weight-medium Top Posts by Platform
         div.rounded-lg(style="min-height: 325px; max-height: 325px; overflow-y: auto;")
-          v-card.px-4.py-2.mb-2(v-for="(platform, index) in ['Facebook', 'Reddit', 'Twitter']" :key="platform" outlined)
+          v-card.px-4.py-2.mb-2(v-for="(platform, index) in ['Facebook', 'Reddit', 'Twitter', 'Quora']" :key="platform" outlined)
             .d-flex.flex-no-wrap.justify-space-between
               .company
                 .d-flex.flex-wrap.align-center
@@ -83,8 +83,8 @@ export default {
         legend: {
           show: true
         },
-        labels: ['Facebook', 'Reddit', 'Twitter'],
-        colors: ['#4267B2', '#FF4500', '#1DA1F2'],
+        labels: ['Facebook', 'Reddit', 'Twitter', 'Quora'],
+        colors: ['#4267B2', '#FF4500', '#1DA1F2', '#A31515'],
         plotOptions: {
           pie: {
             donut: {
@@ -196,7 +196,8 @@ export default {
       return [
         this.analysisResults.facebook?.post_count || 0,
         this.analysisResults.reddit?.post_count || 0,
-        this.analysisResults.twitter?.post_count || 0
+        this.analysisResults.twitter?.post_count || 0,
+        this.analysisResults.quora?.post_count || 0
       ]
     },
     feedbackCategorySeries() {
@@ -365,7 +366,7 @@ export default {
       });
     },
     generatePrompt() {
-      return `Analyze the sentiment in posts and comments from various social media platforms (Facebook, Reddit, Twitter) about Deriv.
+      return `Analyze the sentiment in posts and comments from various social media platforms (Facebook, Reddit, Twitter, Quora) about Deriv.
         For each platform, determine whether the overall sentiment is positive, neutral, or negative, and calculate an average sentiment score between 0 and 1 (where 1 is most positive).
         Also, must categorize each post into one of the following categories based on its content:
         1. User Experience
@@ -396,6 +397,12 @@ export default {
             "sentiment_summary": "String (Positive, Neutral, Negative)",
             "top_post": "String (Top Twitter post based on engagement)",
             "post_count": "Integer (total number of Twitter posts)"
+          },
+           "quora": {
+            "average_sentiment_score": "Float",
+            "sentiment_summary": "String (Positive, Neutral, Negative)",
+            "top_post": "String (Top Quora post based on engagement)",
+            "post_count": "Integer (total number of Quora posts)"
           },
           "overall_average_sentiment_score": "Float (average sentiment score across all platforms)",
           "overall_sentiment_status": "String (Positive, Neutral, Negative)",
