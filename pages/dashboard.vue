@@ -14,6 +14,10 @@
       p.text-center.mb-0.primary--text.font-weight-medium Status
       h2.text-center.mb-4(:class="getCreditColor(analysisResults?.overall_average_sentiment_score * 100)") {{ analysisResults?.overall_sentiment_status }}
 
+    v-col(cols="12")
+      v-card.fill-height.shadow.pa-3.py-2.rounded-lg(elevation="0")
+        ApexCharts(type="line" :options="lineChartOptions" :series="chartSeries" ref="chart")
+
     v-col(cols="4")
       v-card.fill-height.shadow.pa-3.py-2.rounded-lg(elevation="0")
         p.font-weight-medium Platform Sentiment Distribution
@@ -49,9 +53,6 @@
                     p.mb-0.caption {{ index + 1 }}
                 p.mb-0 {{ getTopPost(platform) }}
                 p.mb-0(:class="getSentimentTextColor(platform)") {{ getPlatformSentiment(platform) }}
-    v-col(cols="12")
-      v-card.fill-height.shadow.pa-3.py-2.rounded-lg(elevation="0")
-        ApexCharts(type="line" :options="lineChartOptions" :series="chartSeries" ref="chart")
 </template>
 
 <script>
@@ -127,6 +128,64 @@ export default {
           ]
         }
       },
+      lineChartOptions: {
+        chart: {
+          id: 'realtime',
+          height: 350,
+          type: 'line',
+          animations: {
+            enabled: true,
+            easing: 'linear',
+            dynamicAnimation: {
+              speed: 1000
+            }
+          },
+          toolbar: {
+            show: false
+          },
+          zoom: {
+            enabled: false
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+          text: 'Dynamic Updating Chart',
+          align: 'left'
+        },
+        markers: {
+          size: 0
+        },
+        xaxis: {
+          // categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+          // title: {
+          //   text: 'Month'
+          // }
+          type: 'datetime',
+          // range: 10000
+          max: new Date().getTime() - 60 * 1000, // 1 hour ago
+          min: new Date().getTime(), // current time
+          tickAmount: 5,
+          labels: {
+            show: true,
+            format: 'dd MMM HH:mm'
+          },
+
+        },
+        colors: ['#bb0000'],
+        yaxis: {
+          title: {
+            text: 'Value'
+          }
+        },
+        legend: {
+          show: false
+        }
+      }
     }
   },
   computed: {
@@ -160,103 +219,108 @@ export default {
       }]
     },
     series() {
-    // Calculate series only if analysisResults and overall_average_sentiment_score are defined
-    return this.analysisResults
-      ? [((this.analysisResults.overall_average_sentiment_score || 0.75) / 0.85) * 100]
-      : [0];
-  },
-  meterChartOptions() {
-    return {
-      chart: {
-        type: 'radialBar',
-        offsetY: -10,
-        sparkline: {
-          enabled: true
-        }
-      },
-      plotOptions: {
-        radialBar: {
-          hollow: {
-            size: '70%',
-            margin: -20,
-            image: require('../assets/img/speedometer.svg'),
-            imageWidth: 64,
-            imageHeight: 64,
-            imageClipped: false
-          },
-          startAngle: -90,
-          endAngle: 90,
-          track: {
-            background: '#f2f4f6',
-            strokeWidth: '70%',
-            margin: 5,
-            dropShadow: {
-              enabled: true,
-              top: 0,
-              left: 0,
-              color: '#c1c1c1',
-              opacity: 0.5,
-              blur: 1
-            }
-          },
-          dataLabels: {
-            name: {
-              show: true,
-              offsetY: -40,
-              fontSize: '22px',
-              color: '#002147'
+      // Calculate series only if analysisResults and overall_average_sentiment_score are defined
+      return this.analysisResults
+        ? [((this.analysisResults.overall_average_sentiment_score || 0.75) / 0.85) * 100]
+        : [0];
+    },
+    meterChartOptions() {
+      return {
+        chart: {
+          type: 'radialBar',
+          offsetY: -10,
+          sparkline: {
+            enabled: true
+          }
+        },
+        plotOptions: {
+          radialBar: {
+            hollow: {
+              size: '70%',
+              margin: -20,
+              image: require('../assets/img/speedometer.svg'),
+              imageWidth: 64,
+              imageHeight: 64,
+              imageClipped: false
             },
-            value: {
-              show: false
+            startAngle: -90,
+            endAngle: 90,
+            track: {
+              background: '#f2f4f6',
+              strokeWidth: '70%',
+              margin: 5,
+              dropShadow: {
+                enabled: true,
+                top: 0,
+                left: 0,
+                color: '#c1c1c1',
+                opacity: 0.5,
+                blur: 1
+              }
+            },
+            dataLabels: {
+              name: {
+                show: true,
+                offsetY: -40,
+                fontSize: '22px',
+                color: '#002147'
+              },
+              value: {
+                show: false
+              }
             }
           }
-        }
-      },
-      grid: {
-        padding: {
-          top: -10
-        }
-      },
-      fill: {
-        type: 'gradient',
-        gradient: {
-          type: 'horizontal',
-          shade: 'light',
-          shadeIntensity: 0.4,
-          inverseColors: false,
-          opacityFrom: 1,
-          opacityTo: 1,
-          stops: [0, 10, 53, 91],
-          colorStops: [
-            {
-              offset: -2.35,
-              color: '#F52F62',
-              opacity: 1
-            },
-            {
-              offset: 60.52,
-              color: '#4AA9F2',
-              opacity: 1
-            },
-            {
-              offset: 84.99,
-              color: '#49CFB2',
-              opacity: 1
-            }
-          ]
-        }
-      },
-      labels: [this.analysisResults?.overall_average_sentiment_score]
-    };
-  }
+        },
+        grid: {
+          padding: {
+            top: -10
+          }
+        },
+        fill: {
+          type: 'gradient',
+          gradient: {
+            type: 'horizontal',
+            shade: 'light',
+            shadeIntensity: 0.4,
+            inverseColors: false,
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [0, 10, 53, 91],
+            colorStops: [
+              {
+                offset: -2.35,
+                color: '#F52F62',
+                opacity: 1
+              },
+              {
+                offset: 60.52,
+                color: '#4AA9F2',
+                opacity: 1
+              },
+              {
+                offset: 84.99,
+                color: '#49CFB2',
+                opacity: 1
+              }
+            ]
+          }
+        },
+        labels: [this.analysisResults?.overall_average_sentiment_score]
+      };
+    }
   },
   mounted () {
     const interval = (0);
     const chartSeries = [];
-    const timeStamps = [];
-    this.interval = setInterval(this.updateChartData, 3000); // Update every 1 second
-    // this.updateChartData();
-    this.analyzeSentiment();
+
+    this.analyzeSentiment().then(() => {
+      this.interval = setInterval(this.updateChartData, 3000); // Update every 1 second
+    // This will run after analyzeSentiment() completes
+      this.updateChartData();
+    }).catch((error) => {
+      // Handle any errors that might have occurred during sentiment analysis
+      console.error('Error during sentiment analysis:', error);
+    });
 
   },
   beforeDestroy() {
@@ -267,11 +331,7 @@ export default {
     // Watch for changes in chartSeries
     chartSeries(newValue, oldValue) {
       console.log('chartSeries changed:', this.$refs.chart);
-    },
-  },
-  beforeDestroy() {
-    // Clear the interval when the component is destroyed to prevent memory leaks
-    clearInterval(this.interval);
+    }
   },
   methods: {
     generateMockData() {
@@ -349,45 +409,25 @@ export default {
           }
         }`
     },
-    analyzeSentiment() {
-      // try {
-      //   this.loading = true
-      //   const prompt = this.generatePrompt()
-      //   const rawResponse = await run(prompt)
-      //   this.analysisResults = JSON.parse(rawResponse)
+    async analyzeSentiment() {
+      try {
+        this.loading = true
+        const prompt = this.generatePrompt()
+        const rawResponse = await run(prompt)
+        this.analysisResults = JSON.parse(rawResponse)
 
-      // } catch (error) {
-      //   console.error('Error analyzing sentiment:', error)
-      //   // Show error notification to user
-      //   this.$notify({
-      //     type: 'error',
-      //     title: 'Error',
-      //     text: 'Failed to analyze sentiment data. Please try again later.'
-      //   })
-      // } finally {
-      //   this.loading = false
-
-      // }
-      this.loading = true
-      const prompt = this.generatePrompt()
-
-      run(prompt)
-        .then(rawResponse => {
-          this.analysisResults = JSON.parse(rawResponse);
-          this.updateChartData();
+      } catch (error) {
+        console.error('Error analyzing sentiment:', error)
+        // Show error notification to user
+        this.$notify({
+          type: 'error',
+          title: 'Error',
+          text: 'Failed to analyze sentiment data. Please try again later.'
         })
-        .catch(error => {
-          console.error('Error analyzing sentiment:', error)
-          // Show error notification to user
-          this.$notify({
-            type: 'error',
-            title: 'Error',
-            text: 'Failed to analyze sentiment data. Please try again later.'
-          })
-        })
-        .finally(() => {
-          this.loading = false
-        });
+      } finally {
+        this.loading = false
+
+      }
     },
     getSentimentColor(sentiment) {
       const colors = {
@@ -435,10 +475,7 @@ export default {
       } else {
         return 'weak--text'
       }
-    },
-  },
-  mounted() {
-    this.analyzeSentiment()
+    }
   }
 }
 </script>
