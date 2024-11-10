@@ -31,9 +31,9 @@ export default new Vuetify({
         lightBlue: '#e9f7ff',
         lightBlue2: '#aaaec8',
         lightBlue3: '#E5E6EE',
-        weak: '#F52F62',
-        good: '#4AA9F2',
-        excellent: '#49CFB2'
+        weak: '#bb0000',
+        good: '#FDA42E',
+        excellent: '#3d9970'
       }
     }
   }

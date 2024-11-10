@@ -152,17 +152,17 @@ export default {
           colorStops: [
             {
               offset: -2.35,
-              color: '#F52F62',
+              color: '#BB0000',
               opacity: 1
             },
             {
               offset: 60.52,
-              color: '#4AA9F2',
+              color: '#FDA42E',
               opacity: 1
             },
             {
               offset: 84.99,
-              color: '#49CFB2',
+              color: '#3D9970',
               opacity: 1
             }
           ]

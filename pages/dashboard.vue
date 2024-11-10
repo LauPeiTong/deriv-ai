@@ -3,20 +3,23 @@
   upper-title.ma-0.darkGrey2--text(:title="'Social Media Sentiment Analysis'" :icon="'analytics'" :rightIconColor="$vuetify.theme.themes.light.primary")
 
   // Loading overlay
-  v-overlay(:value="loading")
-    v-progress-circular(indeterminate size="64")
+  v-row.ma-0.pt-16.fill-width.px-2(v-if="loading")
+    .div.d-flex.flex-column.mx-auto.pt-4
+      v-progress-circular.mx-auto(color="primary" indeterminate)
+      p.pt-3.secondary--text.text-center Loading dashboard result...
 
-  v-row.ma-0.pt-14.fill-width.px-2(v-if="!loading")
+  v-row.ma-0.pt-16.fill-width.px-2(v-if="!loading")
     //- Meter
-    v-card.fill-height.rounded-lg.py-2.px-3.mb-3(outlined)
-      ApexCharts(type="radialBar" :options="meterChartOptions" :series="series")
-      v-divider.my-2
-      p.text-center.mb-0.primary--text.font-weight-medium Status
-      h2.text-center.mb-4(:class="getCreditColor(analysisResults?.overall_average_sentiment_score * 100)") {{ analysisResults?.overall_sentiment_status }}
-
-    v-col(cols="12")
+    v-col(cols="8")
       v-card.fill-height.shadow.pa-3.py-2.rounded-lg(elevation="0")
         ApexCharts(type="line" :options="lineChartOptions" :series="chartSeries" ref="chart")
+
+    v-col(cols="4")
+      v-card.fill-height.rounded-lg.py-2.px-3.mb-3(outlined)
+        ApexCharts(type="radialBar" :options="meterChartOptions" :series="series")
+        v-divider.my-2
+        p.text-center.mb-0.primary--text.font-weight-medium Status
+        h2.text-center.mb-4(:class="getCreditColor(analysisResults?.overall_average_sentiment_score * 100)") {{ analysisResults?.overall_sentiment_status }}
 
     v-col(cols="4")
       v-card.fill-height.shadow.pa-3.py-2.rounded-lg(elevation="0")
@@ -70,7 +73,7 @@ export default {
   },
   data() {
     return {
-      loading: false,
+      loading: true,
       analysisResults: null,
       chartSeries: [{
         name: 'Data Series 1',
@@ -84,7 +87,7 @@ export default {
           show: true
         },
         labels: ['Facebook', 'Reddit', 'Twitter', 'Quora'],
-        colors: ['#4267B2', '#FF4500', '#1DA1F2', '#A31515'],
+        colors: ['#8ae887', '#f2c01d', '#FF4500', '#A31515'],
         plotOptions: {
           pie: {
             donut: {
@@ -290,17 +293,17 @@ export default {
             colorStops: [
               {
                 offset: -2.35,
-                color: '#F52F62',
+                color: '#bb0000',
                 opacity: 1
               },
               {
                 offset: 60.52,
-                color: '#4AA9F2',
+                color: '#ff4500',
                 opacity: 1
               },
               {
                 offset: 84.99,
-                color: '#49CFB2',
+                color: '#f2c71d',
                 opacity: 1
               }
             ]
