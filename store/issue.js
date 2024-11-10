@@ -5,344 +5,344 @@ export const state = () => ({
       id: 1,
       table: [
         {
-          id: "A18932",
-          customer: {
-            name: "Nicholas Lee Wen Jie",
-            age: 29,
-            gender: "Male",
-            location: "Kuala Lumpur, Malaysia",
-            tradingExperience: "5 years",
-            phone: "+6016-800 1231",
-            email: "nicholas@gmail.com",
-            logo: 1
+          "id": "A18932",
+          "customer": {
+            "name": "Nicholas Lee Wen Jie",
+            "age": 29,
+            "gender": "Male",
+            "location": "Kuala Lumpur, Malaysia",
+            "tradingExperience": "5 years",
+            "phone": "+6016-800 1231",
+            "email": "nicholas@gmail.com",
+            "logo": 1
           },
-          issue: "UI glitch on dashboard",
-          issueDate: "13/05/2022",
-          assignedDate: "",
-          actionDate: "",
-          subject: "",
-          key_issue: "",
-          sentimentScore: 8.0,
-          urgencyLevel: "Low",
-          status: "Pending",
-          jiraId: "J12093",
-          assignee: {
-            name: "",
-            department: ""
+          "issue": "UI glitch on dashboard",
+          "issueDate": "13/05/2022",
+          "assignedDate": "",
+          "actionDate": "",
+          "subject": "",
+          "key_issue": "",
+          "sentimentScore": 0.8,
+          "urgencyLevel": "Low",
+          "status": "Pending",
+          "jiraId": "J12093",
+          "assignee": {
+            "name": "",
+            "department": ""
           },
-          recommendation: {
-            focus: "",
-            suggested_features: []
+          "recommendation": {
+            "focus": "",
+            "suggested_features": []
           },
-          next_steps: [],
-          deadline: "",
-          resolvedDate: ""
+          "next_steps": [],
+          "deadline": "",
+          "resolvedDate": ""
         },
         {
-          id: "A18933",
-          customer: {
-            name: "Emma Tan Li Ying",
-            age: 32,
-            gender: "Female",
-            location: "Penang, Malaysia",
-            tradingExperience: "3 years",
-            phone: "+6016-800 5672",
-            email: "emma.tan@gmail.com",
-            logo: 2
+          "id": "A18933",
+          "customer": {
+            "name": "Emma Tan Li Ying",
+            "age": 32,
+            "gender": "Female",
+            "location": "Penang, Malaysia",
+            "tradingExperience": "3 years",
+            "phone": "+6016-800 5672",
+            "email": "emma.tan@gmail.com",
+            "logo": 2
           },
-          issue: "Delayed funds transfer",
-          issueDate: "13/05/2022",
-          assignedDate: "",
-          actionDate: "",
-          subject: "",
-          key_issue: "",
-          sentimentScore: 6.5,
-          urgencyLevel: "High",
-          status: "Pending",
-          jiraId: "",
-          assignee: {
-            name: "",
-            department: ""
+          "issue": "Delayed funds transfer",
+          "issueDate": "13/05/2022",
+          "assignedDate": "",
+          "actionDate": "",
+          "subject": "",
+          "key_issue": "",
+          "sentimentScore": 0.65,
+          "urgencyLevel": "High",
+          "status": "Pending",
+          "jiraId": "",
+          "assignee": {
+            "name": "",
+            "department": ""
           },
-          recommendation: {
-            focus: "",
-            suggested_features: []
+          "recommendation": {
+            "focus": "",
+            "suggested_features": []
           },
-          next_steps: [],
-          deadline: "",
-          resolvedDate: ""
+          "next_steps": [],
+          "deadline": "",
+          "resolvedDate": ""
         },
         {
-          id: "A18934",
-          customer: {
-            name: "John Lim Wei Sheng",
-            age: 41,
-            gender: "Male",
-            location: "Singapore",
-            tradingExperience: "10 years",
-            phone: "+6016-800 8754",
-            email: "john.lim@gmail.com",
-            logo: 3
+          "id": "A18934",
+          "customer": {
+            "name": "John Lim Wei Sheng",
+            "age": 41,
+            "gender": "Male",
+            "location": "Singapore",
+            "tradingExperience": "10 years",
+            "phone": "+6016-800 8754",
+            "email": "john.lim@gmail.com",
+            "logo": 3
           },
-          issue: "Trade execution delay",
-          issueDate: "13/05/2022",
-          assignedDate: "",
-          actionDate: "",
-          subject: "",
-          key_issue: "",
-          sentimentScore: 5.0,
-          urgencyLevel: "High",
-          status: "In Progress",
-          jiraId: "",
-          assignee: {
-            name: "",
-            department: ""
+          "issue": "Trade execution delay",
+          "issueDate": "13/05/2022",
+          "assignedDate": "",
+          "actionDate": "",
+          "subject": "",
+          "key_issue": "",
+          "sentimentScore": 0.5,
+          "urgencyLevel": "High",
+          "status": "In Progress",
+          "jiraId": "",
+          "assignee": {
+            "name": "",
+            "department": ""
           },
-          recommendation: {
-            focus: "",
-            suggested_features: []
+          "recommendation": {
+            "focus": "",
+            "suggested_features": []
           },
-          next_steps: [],
-          deadline: "",
-          resolvedDate: ""
+          "next_steps": [],
+          "deadline": "",
+          "resolvedDate": ""
         },
         {
-          id: "A18942",
-          customer: {
-            name: "Afiq Iqmal Bin Mohd Zain",
-            age: 31,
-            gender: "Male",
-            location: "Kuala Lumpur, Malaysia",
-            tradingExperience: "4 years",
-            phone: "+6016-801 2211",
-            email: "afiq.iqmal@gmail.com",
-            logo: 11
+          "id": "A18942",
+          "customer": {
+            "name": "Afiq Iqmal Bin Mohd Zain",
+            "age": 31,
+            "gender": "Male",
+            "location": "Kuala Lumpur, Malaysia",
+            "tradingExperience": "4 years",
+            "phone": "+6016-801 2211",
+            "email": "afiq.iqmal@gmail.com",
+            "logo": 11
           },
-          issue: "Account closure request",
-          issueDate: "13/05/2022",
-          assignedDate: "",
-          actionDate: "",
-          subject: "",
-          key_issue: "",
-          sentimentScore: 7.2,
-          urgencyLevel: "Medium",
-          status: "Pending",
-          jiraId: "",
-          assignee: {
-            name: "",
-            department: ""
+          "issue": "Account closure request",
+          "issueDate": "13/05/2022",
+          "assignedDate": "",
+          "actionDate": "",
+          "subject": "",
+          "key_issue": "",
+          "sentimentScore": 0.72,
+          "urgencyLevel": "Medium",
+          "status": "Pending",
+          "jiraId": "",
+          "assignee": {
+            "name": "",
+            "department": ""
           },
-          recommendation: {
-            focus: "",
-            suggested_features: []
+          "recommendation": {
+            "focus": "",
+            "suggested_features": []
           },
-          next_steps: [],
-          deadline: "",
-          resolvedDate: ""
+          "next_steps": [],
+          "deadline": "",
+          "resolvedDate": ""
         },
         {
-          id: "A18943",
-          customer: {
-            name: "Saraswathi Devi Rajah",
-            age: 40,
-            gender: "Female",
-            location: "Selangor, Malaysia",
-            tradingExperience: "10 years",
-            phone: "+6016-802 3322",
-            email: "saraswathi.devi@gmail.com",
-            logo: 12
+          "id": "A18943",
+          "customer": {
+            "name": "Saraswathi Devi Rajah",
+            "age": 40,
+            "gender": "Female",
+            "location": "Selangor, Malaysia",
+            "tradingExperience": "10 years",
+            "phone": "+6016-802 3322",
+            "email": "saraswathi.devi@gmail.com",
+            "logo": 12
           },
-          issue: "Deposit not reflected",
-          issueDate: "13/05/2022",
-          assignedDate: "",
-          actionDate: "",
-          subject: "",
-          key_issue: "",
-          sentimentScore: 6.5,
-          urgencyLevel: "High",
-          status: "In Progress",
-          jiraId: "",
-          assignee: {
-            name: "",
-            department: ""
+          "issue": "Deposit not reflected",
+          "issueDate": "13/05/2022",
+          "assignedDate": "",
+          "actionDate": "",
+          "subject": "",
+          "key_issue": "",
+          "sentimentScore": 0.65,
+          "urgencyLevel": "High",
+          "status": "In Progress",
+          "jiraId": "",
+          "assignee": {
+            "name": "",
+            "department": ""
           },
-          recommendation: {
-            focus: "",
-            suggested_features: []
+          "recommendation": {
+            "focus": "",
+            "suggested_features": []
           },
-          next_steps: [],
-          deadline: "",
-          resolvedDate: ""
+          "next_steps": [],
+          "deadline": "",
+          "resolvedDate": ""
         },
         {
-          id: "A18944",
-          customer: {
-            name: "Nur Aina Binti Yusof",
-            age: 28,
-            gender: "Female",
-            location: "Johor Bahru, Malaysia",
-            tradingExperience: "2 years",
-            phone: "+6016-803 4433",
-            email: "nur.aina@gmail.com",
-            logo: 13
+          "id": "A18944",
+          "customer": {
+            "name": "Nur Aina Binti Yusof",
+            "age": 28,
+            "gender": "Female",
+            "location": "Johor Bahru, Malaysia",
+            "tradingExperience": "2 years",
+            "phone": "+6016-803 4433",
+            "email": "nur.aina@gmail.com",
+            "logo": 13
           },
-          issue: "Password reset issue",
-          issueDate: "13/05/2022",
-          assignedDate: "",
-          actionDate: "",
-          subject: "",
-          key_issue: "",
-          sentimentScore: 9.0,
-          urgencyLevel: "Low",
-          status: "Resolved",
-          jiraId: "",
-          assignee: {
-            name: "",
-            department: ""
+          "issue": "Password reset issue",
+          "issueDate": "13/05/2022",
+          "assignedDate": "",
+          "actionDate": "",
+          "subject": "",
+          "key_issue": "",
+          "sentimentScore": 0.9,
+          "urgencyLevel": "Low",
+          "status": "Resolved",
+          "jiraId": "",
+          "assignee": {
+            "name": "",
+            "department": ""
           },
-          recommendation: {
-            focus: "",
-            suggested_features: []
+          "recommendation": {
+            "focus": "",
+            "suggested_features": []
           },
-          next_steps: [],
-          deadline: "",
-          resolvedDate: ""
+          "next_steps": [],
+          "deadline": "",
+          "resolvedDate": ""
         },
         {
-          id: "A18945",
-          customer: {
-            name: "Vikram Singh Raj",
-            age: 37,
-            gender: "Male",
-            location: "Penang, Malaysia",
-            tradingExperience: "9 years",
-            phone: "+6016-804 5544",
-            email: "vikram.singh@gmail.com",
-            logo: 14
+          "id": "A18945",
+          "customer": {
+            "name": "Vikram Singh Raj",
+            "age": 37,
+            "gender": "Male",
+            "location": "Penang, Malaysia",
+            "tradingExperience": "9 years",
+            "phone": "+6016-804 5544",
+            "email": "vikram.singh@gmail.com",
+            "logo": 14
           },
-          issue: "Fee dispute",
-          issueDate: "13/05/2022",
-          assignedDate: "",
-          actionDate: "",
-          subject: "",
-          key_issue: "",
-          sentimentScore: 5.0,
-          urgencyLevel: "High",
-          status: "Pending",
-          jiraId: "",
-          assignee: {
-            name: "",
-            department: ""
+          "issue": "Fee dispute",
+          "issueDate": "13/05/2022",
+          "assignedDate": "",
+          "actionDate": "",
+          "subject": "",
+          "key_issue": "",
+          "sentimentScore": 0.5,
+          "urgencyLevel": "High",
+          "status": "Pending",
+          "jiraId": "",
+          "assignee": {
+            "name": "",
+            "department": ""
           },
-          recommendation: {
-            focus: "",
-            suggested_features: []
+          "recommendation": {
+            "focus": "",
+            "suggested_features": []
           },
-          next_steps: [],
-          deadline: "",
-          resolvedDate: ""
+          "next_steps": [],
+          "deadline": "",
+          "resolvedDate": ""
         },
         {
-          id: "A18946",
-          customer: {
-            name: "Amirah Fatin Binti Abdul Rahman",
-            age: 26,
-            gender: "Female",
-            location: "Kuantan, Malaysia",
-            tradingExperience: "3 years",
-            phone: "+6016-805 6655",
-            email: "amirah.fatin@gmail.com",
-            logo: 15
+          "id": "A18946",
+          "customer": {
+            "name": "Amirah Fatin Binti Abdul Rahman",
+            "age": 26,
+            "gender": "Female",
+            "location": "Kuantan, Malaysia",
+            "tradingExperience": "3 years",
+            "phone": "+6016-805 6655",
+            "email": "amirah.fatin@gmail.com",
+            "logo": 15
           },
-          issue: "Account settings update",
-          issueDate: "13/05/2022",
-          assignedDate: "",
-          actionDate: "",
-          subject: "",
-          key_issue: "",
-          sentimentScore: 8.0,
-          urgencyLevel: "Medium",
-          status: "Pending",
-          jiraId: "",
-          assignee: {
-            name: "",
-            department: ""
+          "issue": "Account settings update",
+          "issueDate": "13/05/2022",
+          "assignedDate": "",
+          "actionDate": "",
+          "subject": "",
+          "key_issue": "",
+          "sentimentScore": 0.8,
+          "urgencyLevel": "Medium",
+          "status": "Pending",
+          "jiraId": "",
+          "assignee": {
+            "name": "",
+            "department": ""
           },
-          recommendation: {
-            focus: "",
-            suggested_features: []
+          "recommendation": {
+            "focus": "",
+            "suggested_features": []
           },
-          next_steps: [],
-          deadline: "",
-          resolvedDate: ""
+          "next_steps": [],
+          "deadline": "",
+          "resolvedDate": ""
         },
         {
-          id: "A18935",
-          customer: {
-            name: "Siti Noor Aisyah",
-            age: 27,
-            gender: "Female",
-            location: "Johor, Malaysia",
-            tradingExperience: "2 years",
-            phone: "+6016-800 4523",
-            email: "siti.noor@gmail.com",
-            logo: 4
+          "id": "A18935",
+          "customer": {
+            "name": "Siti Noor Aisyah",
+            "age": 27,
+            "gender": "Female",
+            "location": "Johor, Malaysia",
+            "tradingExperience": "2 years",
+            "phone": "+6016-800 4523",
+            "email": "siti.noor@gmail.com",
+            "logo": 4
           },
-          issue: "Tooltip error on charts",
-          issueDate: "13/05/2022",
-          assignedDate: "",
-          actionDate: "",
-          subject: "",
-          key_issue: "",
-          sentimentScore: 8.5,
-          urgencyLevel: "Low",
-          status: "Resolved",
-          jiraId: "",
-          assignee: {
-            name: "",
-            department: ""
+          "issue": "Tooltip error on charts",
+          "issueDate": "13/05/2022",
+          "assignedDate": "",
+          "actionDate": "",
+          "subject": "",
+          "key_issue": "",
+          "sentimentScore": 0.85,
+          "urgencyLevel": "Low",
+          "status": "Resolved",
+          "jiraId": "",
+          "assignee": {
+            "name": "",
+            "department": ""
           },
-          recommendation: {
-            focus: "",
-            suggested_features: []
+          "recommendation": {
+            "focus": "",
+            "suggested_features": []
           },
-          next_steps: [],
-          deadline: "",
-          resolvedDate: ""
+          "next_steps": [],
+          "deadline": "",
+          "resolvedDate": ""
         },
         {
-          id: "A18936",
-          customer: {
-            name: "Daniel Wong Chia Wei",
-            age: 35,
-            gender: "Male",
-            location: "Kuala Lumpur, Malaysia",
-            tradingExperience: "7 years",
-            phone: "+6016-800 7890",
-            email: "daniel.wong@gmail.com",
-            logo: 5
+          "id": "A18936",
+          "customer": {
+            "name": "Daniel Wong Chia Wei",
+            "age": 35,
+            "gender": "Male",
+            "location": "Kuala Lumpur, Malaysia",
+            "tradingExperience": "7 years",
+            "phone": "+6016-800 7890",
+            "email": "daniel.wong@gmail.com",
+            "logo": 5
           },
-          issue: "Withdrawal limit increase request",
-          issueDate: "13/05/2022",
-          assignedDate: "",
-          actionDate: "",
-          subject: "",
-          key_issue: "",
-          sentimentScore: 9.0,
-          urgencyLevel: "Medium",
-          status: "Pending",
-          jiraId: "",
-          assignee: {
-            name: "",
-            department: ""
+          "issue": "Withdrawal limit increase request",
+          "issueDate": "13/05/2022",
+          "assignedDate": "",
+          "actionDate": "",
+          "subject": "",
+          "key_issue": "",
+          "sentimentScore": 0.9,
+          "urgencyLevel": "Medium",
+          "status": "Pending",
+          "jiraId": "",
+          "assignee": {
+            "name": "",
+            "department": ""
           },
-          recommendation: {
-            focus: "",
-            suggested_features: []
+          "recommendation": {
+            "focus": "",
+            "suggested_features": []
           },
-          next_steps: [],
-          deadline: "",
-          resolvedDate: ""
+          "next_steps": [],
+          "deadline": "",
+          "resolvedDate": ""
         }
       ]
     }

@@ -47,7 +47,6 @@ export default {
   },
   data () {
     return {
-      series: null,
       chartOptions: null,
       creditScoreValue: [
         {
@@ -75,12 +74,18 @@ export default {
   },
   computed: {
     ...mapGetters({
-    })
+    }),
+    series() {
+      // Calculate series only if analysisResults and overall_average_sentiment_score are defined
+      return this.issue.sentimentScore
+          ? [((this.issue.sentimentScore || 0.75) / 0.85) * 100]
+          : [0];
+    },
   },
 
   created () {
     // console.log(this.$route.params)
-    this.series = [((this.issue.sentimentScore ?? 90) / 100) * 100]
+    // this.series = [((this.issue.sentimentScore ?? 90) / 100) * 100]
     // this.series = [((this.customer.creditScore ?? 750) / 850) * 100]
     this.creditScoreValue[0].per = this.issue.payment_history
     this.creditScoreValue[1].per = this.issue.amount_owed
@@ -173,24 +178,18 @@ export default {
   },
   methods: {
     getCreditStatus (score) {
-      if (score >= 9) {
-        return 'Excellent'
-      } else if (score >= 7) {
-        return 'Good'
-      } else if (score >= 5) {
-        return 'Above Average'
-      } else if (score >= 3) {
-        return 'Below Average'
-      } else if (score >=  1) {
-        return 'Weak'
+      if (score >= 0.6) {
+        return 'Positive'
+      } else if (score >= 0.3) {
+        return 'Neutral'
       } else {
-        return 'Very Weak'
+        return 'Negative'
       }
     },
     getCreditColor (score) {
-      if (score >= 8) {
+      if (score >= 0.8) {
         return 'excellent--text'
-      } else if (score >= 5) {
+      } else if (score >= 0.5) {
         return 'good--text'
       } else {
         return 'weak--text'
